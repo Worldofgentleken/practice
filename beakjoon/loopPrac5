@@ -1,0 +1,10 @@
+total_money = int(input())
+bought = int(input())
+sum = 0
+for i in range(bought):
+    a, b = map(int, input().split())
+    sum += a*b
+if total_money == sum:
+    print('Yes')
+else:
+    print('No')
