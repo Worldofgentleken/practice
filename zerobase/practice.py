@@ -55,3 +55,22 @@ m = float(input('시간(m) 입력 : '))
 d = getDist(s, h, m)
 print(f'{s}(km/h)속도로 {h}(h)시간 {m}(m)분 동안 이동한 거리 : {d}(km)')
 print('-' * 60)
+
+
+#------------------------------------------------------------
+#속도(km/h) 입력 :  90
+#거리(km) 입력 :  247.5
+#90.0(km/h)속도로 247.5(km) 이동한 시간 : 2(h)시간 45(m)분
+#------------------------------------------------------------
+
+def getTime(speed, dist):
+    h = int(dist // speed)
+    m = int((dist/speed - dist//speed)*60)
+    return [h, m]
+
+print('-' * 60)
+s = float(input('속도(km/h) 입력 : '))
+d = float(input('거리(km) 입력 : '))
+t = getTime(s, d)
+print(f'{s}(km/h)속도로 {d}(km) 이동한 시간 : {t[0]}(h)시간 {t[1]}(m)분')
+print('-' * 60)
