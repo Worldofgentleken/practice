@@ -97,36 +97,36 @@ print('-' * 60)
 # 성인 2명 요금 : 100,000원
 # 성인 할인 대상 0명 요금 : 0원
 # ====================================
-# Total : 5명
-# TotalPrice : 146,500원
+# Total : 7명
+# TotalPrice : 189,500원
 # ====================================
 
 #함수
 def childPrice(c1, c2):
     childDiscPrice = 0
     childBasicTotal = 18000 * c1
-    childTotalPrice = (18000 * c2 * 0.5) + (18000*(c1-c2))
     if c1 >= 1 and 1 <= c2 <= c1:
         childDiscPrice = 18000 * c2 * 0.5
+    childTotalPrice = childBasicTotal + childDiscPrice
         
     return [childBasicTotal, childDiscPrice, childTotalPrice]
 
 def infrantPrice(i1, i2):
     infrantDiscPrice = 0
     infrantBasicTotal = 25000 * i1
-    infrantTotalPrice = (25000 * i2 * 0.5) + (25000*(i1-i2))
     if i1 >= 1 and 1 <= i2 <= i1:
         infrantDiscPrice = 25000 * i2 * 0.5
+    infrantTotalPrice = infrantBasicTotal + infrantDiscPrice
         
     return [infrantBasicTotal, infrantDiscPrice, infrantTotalPrice]
 
 def adultPrice(a1, a2):
     adultDiscPrice = 0
     adultBasicTotal = 50000 * a1
-    adultTotalPrice = (50000 * a2 * 0.5) + (50000*(a1-a2))
     if a1 >= 1 and 1 <= a2 <= a1:
         adultDiscPrice = 50000 * a2 * 0.5
-        
+    adultTotalPrice = adultBasicTotal + adultDiscPrice
+
     return [adultBasicTotal, adultDiscPrice, adultTotalPrice]
 
 #입력
