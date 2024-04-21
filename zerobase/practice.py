@@ -75,28 +75,83 @@ t = getTime(s, d)
 print(f'{s}(km/h)속도로 {d}(km) 이동한 시간 : {t[0]}(h)시간 {t[1]}(m)분')
 print('-' * 60)
 
-다음과 같이 출력 될 수 있도록 비행기 티켓 영수증 출력 함수를 만들어 보자
-childPrice(24개월 미만) : 18,000원
-infrantPrice(만 12세 미만) : 25,000원
-adaltPrice(만 12세 이후) : 50,000원
-국가 유공자 및 장애우 할인 : 50%
+# 다음과 같이 출력 될 수 있도록 비행기 티켓 영수증 출력 함수를 만들어 보자
+# childPrice(24개월 미만) : 18,000원
+# infrantPrice(만 12세 미만) : 25,000원
+# adaltPrice(만 12세 이후) : 50,000원
+# 국가 유공자 및 장애우 할인 : 50%
 
-유아 입력 : 1
-할인대상 유아 입력 : 1
-소아 입력 : 2
-할인대상 소아 입력 : 1
-성인 입력 : 2
-할인대상 성인 입력 : 0
+# 유아 입력 : 1
+# 할인대상 유아 입력 : 1
+# 소아 입력 : 2
+# 할인대상 소아 입력 : 1
+# 성인 입력 : 2
+# 할인대상 성인 입력 : 0
 
-출력
-====================================
-유아 1명 요금 : 18,000원
-유아 할인 대상 1명 요금 : 9,000원
-소아 2명 요금 : 50,000원
-소아 할인 대상 1명 요금 : 12,500원
-성인 2명 요금 : 100,000원
-성인 할인 대상 0명 요금 : 0원
-====================================
-Total : 5명
-TotalPrice : 146,500원
-====================================
+# 출력
+# ====================================
+# 유아 1명 요금 : 18,000원
+# 유아 할인 대상 1명 요금 : 9,000원
+# 소아 2명 요금 : 50,000원
+# 소아 할인 대상 1명 요금 : 12,500원
+# 성인 2명 요금 : 100,000원
+# 성인 할인 대상 0명 요금 : 0원
+# ====================================
+# Total : 5명
+# TotalPrice : 146,500원
+# ====================================
+
+#함수
+def childPrice(c1, c2):
+    childDiscPrice = 0
+    childBasicTotal = 18000 * c1
+    childTotalPrice = (18000 * c2 * 0.5) + (18000*(c1-c2))
+    if c1 >= 1 and 1 <= c2 <= c1:
+        childDiscPrice = 18000 * c2 * 0.5
+        
+    return [childBasicTotal, childDiscPrice, childTotalPrice]
+
+def infrantPrice(i1, i2):
+    infrantDiscPrice = 0
+    infrantBasicTotal = 25000 * i1
+    infrantTotalPrice = (25000 * i2 * 0.5) + (25000*(i1-i2))
+    if i1 >= 1 and 1 <= i2 <= i1:
+        infrantDiscPrice = 25000 * i2 * 0.5
+        
+    return [infrantBasicTotal, infrantDiscPrice, infrantTotalPrice]
+
+def adultPrice(a1, a2):
+    adultDiscPrice = 0
+    adultBasicTotal = 50000 * a1
+    adultTotalPrice = (50000 * a2 * 0.5) + (50000*(a1-a2))
+    if a1 >= 1 and 1 <= a2 <= a1:
+        adultDiscPrice = 50000 * a2 * 0.5
+        
+    return [adultBasicTotal, adultDiscPrice, adultTotalPrice]
+
+#입력
+child = int(input('유아 입력 : '))
+childDisc = int(input('할인대상 유아 입력 : '))
+infrant = int(input('소아 입력 : '))
+infrantDisc = int(input('할인대상 소아 입력 : '))
+adult = int(input('성인 입력 : '))
+adultDisc = int(input('할인대상 성인 입력 : '))
+
+#변수 설정
+ctp = childPrice(child, childDisc)
+itp = infrantPrice(infrant, infrantDisc)
+atp = adultPrice(adult, adultDisc)
+totalCustomer = child + infrant + adult
+totalPrice = atp[2] + itp[2] + ctp[2]
+
+#출력
+print('='*40)
+print(f'유아 {child}명 요금 : {int(ctp[0]):,}원')
+print(f'유아 할인 대상 {childDisc}명 요금 : {int(ctp[1]):,}원')
+print(f'소아 {infant}명 요금 : {itp[0]:,}원')
+print(f'소아 할인대상 {infantDisc}명 요금 : {int(itp[1]):,}원')
+print(f'성인 {adult}명 요금 : {atp[0]:,}원')
+print(f'성인 할인대상 {adultDisc}명 요금 : {int(atp[1]):,}원')
+print('='*40)
+print(f'Total : {totalCustomer}명')
+print(f'TotalPrice : {int(totalPrice):,}원')
